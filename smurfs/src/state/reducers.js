@@ -4,19 +4,19 @@ import * as types from './actionTypes';
 export function smurfReducer(arrayState = [], action) {
   switch (action.type) {
     case types.GET_SMURFS:
-      return state.concat(action.payload);
+      return arrayState.concat(action.payload);
     default:
-      return state;
+      return arrayState;
   }
 }
 
 const initialState = {
   name: '',
-  age: 0,
+  age: '',
   height: '',
-  id: 0,
+  id: '',
 }
-export function formReducer(formState = initialState, action) {
+export function formReducer(state = initialState, action) {
   switch (action.type) {
     case types.GET_SMURFS:
     return {
