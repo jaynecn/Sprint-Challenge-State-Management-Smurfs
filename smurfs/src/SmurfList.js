@@ -4,6 +4,7 @@ import * as actionCreators from './state/actionCreators';
 // import styled from 'styled-components';
 
 export function SmurfList(props) {
+  console.log(props);
   
   const fetchCharacters = e => {
     e.preventDefault();
@@ -13,18 +14,20 @@ export function SmurfList(props) {
   const {state, getSmurfs} = props;
 
   return (
-    <div>
-      <h2>Test</h2>
-      <div>
-        {/* {
+    <div >
+      <h2>Get those smurfs!</h2>
+      <div className="smurfList-div">
+        {
           state.map((info) => (
-            <div>
-              <h4>{info.name}</h4>
+            <div className="smurf-div" key={info.id}>
+              <h2>Name: {info.name}</h2>
+              <h3>Age: {info.age}</h3>
+              <h4>Height: {info.height}</h4>
             </div>
           ))
-        } */}
+        }
       </div>
-      <button className="smurf-button" onClick={fetchCharacters}>Fetch Smurfs!</button>
+      <button className="smurf-button" onClick={fetchCharacters}>Click Here!</button>
     </div>
   )
 }

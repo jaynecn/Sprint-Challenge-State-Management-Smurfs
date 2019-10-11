@@ -3,11 +3,10 @@ import * as types from '../state/actionTypes';
 
 // 7: Design action creators that will activate the reducers
 
-const smurfs = ''
+const smurfsApi = 'http://localhost:3333/smurfs'
 
 export const getSmurfs = () => dispatch => {
-  dispatch({ type: types.GET_SMURFS });
-  axios.get('http://localhost:3333/smurfs')
+  axios.get(smurfsApi)
     .then(res => {
       console.log(res.data);
       dispatch({ type: types.GET_SMURFS, payload: res.data });
@@ -15,4 +14,16 @@ export const getSmurfs = () => dispatch => {
     .catch(err => {
       console.log('error', err.response);
     });
+}
+
+export const addSmurfs = () => dispatch => {
+  axios.post(smurfsApi, )
+    .then(res => {
+      console.log(res.data);
+      dispatch({ type: types.ADD_SMURF,
+      payload: res.data });
+    })
+    .catch(err => {
+      console.log('error', err.response);
+    })
 }

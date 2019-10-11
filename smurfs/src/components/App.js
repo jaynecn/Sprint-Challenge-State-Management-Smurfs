@@ -5,7 +5,8 @@ import { Provider } from 'react-redux';
 import * as reducers from '../state/reducers';
 import "./App.css";
 import Welcome from './../Welcome';
-import { SmurfList } from './../SmurfList';
+import SmurfList from './../SmurfList';
+import NewSmurfForm from './../NewSmurfForm';
 
 // 4: One enormous reducer
 const monsterReducer = combineReducers({
@@ -31,7 +32,10 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Welcome />
-        <SmurfList />
+        <div className="layout-div">
+          <SmurfList />
+          <NewSmurfForm />
+        </div>
       </div>
     </Provider>
   );
