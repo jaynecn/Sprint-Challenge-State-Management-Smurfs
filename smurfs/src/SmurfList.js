@@ -4,7 +4,7 @@ import * as actionCreators from './state/actionCreators';
 // import styled from 'styled-components';
 
 export function SmurfList(props) {
-  console.log(props);
+  // console.log(props);
   
   const fetchCharacters = e => {
     e.preventDefault();

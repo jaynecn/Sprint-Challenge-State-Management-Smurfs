@@ -8,7 +8,7 @@ const smurfsApi = 'http://localhost:3333/smurfs'
 export const getSmurfs = () => dispatch => {
   axios.get(smurfsApi)
     .then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       dispatch({ type: types.GET_SMURFS, payload: res.data });
     })
     .catch(err => {
