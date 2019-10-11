@@ -3,72 +3,44 @@ import { connect } from 'react-redux';
 import * as actionCreators from './state/actionCreators';
 
 function NewSmurfForm(props) {
-  const [newSmurf, setNewSmurf] = useState([]);
+  const initialFormState = {
+    name: '',
+    age: '',
+    height: ''
+  }
+
+  const [newSmurf, setNewSmurf] = useState(initialFormState);
 
   const {formState, getSmurfs} = props;
 
-  const onNameChange = e => {
-    // we have the new value for the name input inside e.target.value
-    setNewSmurf({
-      name: e.target.value,
-      age: newSmurf.age,
-      height: newSmurf.height,
-      id: newSmurf.id
-    });
-  };
-
-  const onAgeChange = e => {
-    // we have the new value for the name input inside e.target.value
-    setNewSmurf({
-      name: newSmurf.name,
-      age: e.target.value,
-      height: newSmurf.height,
-      id: newSmurf.id
-    });
-  };
-
-  const onHeightChange = e => {
-    // we have the new value for the name input inside e.target.value
-    setNewSmurf({
-      name: newSmurf.name,
-      age: newSmurf.age,
-      height: e.target.value,
-      id: newSmurf.id
-    });
-  };
-
-  const handleSubmit = event => {
+  
+    const handleSubmit = event => {
     event.preventDefault();
-    console.log(event.target.value);
-
-    const brandNewSmurf = {
-      name: newSmurf.name,
-      age: newSmurf.role,
-      height: newSmurf.height,
-      id: uuid(),
-    };
-    const brandNewSmurfList = state.concat(brandNewSmurf);
-    setTeamList(newTeamMemberList);
-    setNewMemberForm(initialTeamMemberForm);
+    props.addSmurfs(newSmurf);
   }
   
   const onValueChange = event => {
-    event.preventDefault();
-    console.log(event.target.value);
-    // props.addSmurfs();    
+    setNewSmurf({
+      ...newSmurf,
+      [event.target.name]: event.target.value
+    })  
   }
 
   return (
     <div >
       <h2>Add a new Smurf</h2>
       <form className="new-smurf-div" onSubmit={event => handleSubmit(event)}>
-        <input onChange={event => onNameChange(event)} value={newSmurf.name} name="name" placeholder = "Name"/>
-        <input onChange={event => onAgeChange(event)} name="age" value={newSmurf.age} placeholder = "Age"/>
-        <input onChange={event => onHeightChange(event)} value={newSmurf.height} name="height" placeholder = "Height"/>
+        <input onChange={event => onValueChange(event)} value={newSmurf.name} name="name" placeholder = "Name"/>
+        <input onChange={event => onValueChange(event)} name="age" value={newSmurf.age} placeholder = "Age"/>
+        <input onChange={event => onValueChange(event)} value={newSmurf.height} name="height" placeholder = "Height"/>
         <button onSubmit={event => handleSubmit(event)}>Create a New Smurf</button>
       </form>
     </div>
   )
 }
 
-export default NewSmurfForm;
+export default connect(
+  // callback that takes state and returns it (mapStateToProps)
+  state => state, // we get all slices of state through props (8)
+  actionCreators, // we get all action creators through props (9)
+)(NewSmurfForm);

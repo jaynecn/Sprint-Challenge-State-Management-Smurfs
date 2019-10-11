@@ -6,6 +6,8 @@ export function smurfReducer(state = initialArrayState, action) {
     case types.GET_SMURFS:
       const newState = state.concat(action.payload);
       return newState;
+    case types.ADD_SMURF:
+      return action.payload;
     default:
       return state;
   }
@@ -14,12 +16,11 @@ export function smurfReducer(state = initialArrayState, action) {
 const initialFormState = {
   name: '',
   age: '',
-  height: '',
-  id: '',
+  height: ''
 }
 export function formReducer(formState = initialFormState, action) {
   switch (action.type) {
-    case types.GET_SMURFS:
+    case types.CHANGE_VALUE:
     return {
       ...formState,
       [action.payload.name]: action.payload.value,

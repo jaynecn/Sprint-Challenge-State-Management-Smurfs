@@ -16,8 +16,8 @@ export const getSmurfs = () => dispatch => {
     });
 }
 
-export const addSmurfs = () => dispatch => {
-  axios.post(smurfsApi, )
+export const addSmurfs = (info) => dispatch => {
+  axios.post(smurfsApi, info)
     .then(res => {
       console.log(res.data);
       dispatch({ type: types.ADD_SMURF,
@@ -27,3 +27,4 @@ export const addSmurfs = () => dispatch => {
       console.log('error', err.response);
     })
 }
+
