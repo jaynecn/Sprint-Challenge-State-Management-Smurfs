@@ -1,16 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
+// import thunk from 'redux-thunk';
+// import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
+// import { Provider } from 'react-redux';
+// import * as reducers from './state/reducers';
 import "./App.css";
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
-    );
-  }
+import Welcome from './../Welcome';
+import { smurfReducer } from './../state/reducers';
+
+// 4: One enormous reducer
+const monsterReducer = combineReducers({
+  arrayState: reducers.smurfReducer,
+  formState: reducers.formReducer,
+})
+
+// 5:
+
+
+function App() {
+  return (
+    <div className="App">
+      <Welcome />
+    </div>
+  );
 }
 
 export default App;
