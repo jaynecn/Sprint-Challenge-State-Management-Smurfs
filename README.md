@@ -23,10 +23,30 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] What problem does the context API help solve?
+The problem that sometimes you have to pass props several layers deep in components for one component to access the props.  Props itself has had to go through one or more components that don’t need it, leading to inefficient code.
+
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+Actions - all the possible actions that someone could do in the app.  For example, buying an item (through a button click that triggers a function), inputting data such as your name, etc. Its role is to define all the possible things that a user can do in the app.
+
+Reducers - Reducers are functions.  Actions are processed by a reducer.  It accepts the previous state and also the action that was triggered. It then processes the previous state and the triggered action to deliver the new state. Its role is to be the middle-man between the action that a user wishes, and making the appropriate changes in state to deliver what the user wants.
+
+Store - is the place that holds all of the state.  The state for the entire app is held in one central location, the store.It is knows as the ‘single source of truth’ because it holds all of the state. Its role is to streamline the process of holding state; by having it in one place it is easier to find out whats happening and understand it.  
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application state is when state is held centrally (App.js), component state is when the state is held within one particular component, and can’t be accessed by other components in the app.
+
+Centralised (application) state should be used when you have a very large app with many different states.  This is to improve readability of the code.
+
+Decentralised (component) state may be used if there is only one piece of state in the entire app, and its in that particular component.  In this case you could argue it would be best for readability of the code if the state remained within the component it is being used in.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+Redux Thunk is a type of middleware - they intercept actions before they get to the reducer.  We can use them to make API calls.  They change our action creators because we can now put axios requests into them.
+
 - [ ] What is your favorite state management system you've learned and this sprint? Please explain why!
+Context API - because I appreciate the practical applications of it and how it has an immediate benefit.  Some advantages of Redux aren’t immediately apparent as I’m currently not working with apps with large scale.
+
 
 ## Project Set Up
 

@@ -26,3 +26,46 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.layout-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.smurfList-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.smurf-div {
+  border: 1px solid blue;
+  max-width: 200px;
+}
+
+.smurf-button {
+  border: 1px solid blue;
+  background-color: white;
+  color: blue;
+  font-size: 18px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.new-smurf-div {
+  display: flex;
+  flex-direction: column;
+}
+.new-smurf-div input {
+  padding: 2px;
+}
+
+.new-smurf-div button {
+  border: 1px solid blue;
+  margin: 5px 0px;
+  background-color: white;
+  color: blue;
+  font-size: 14px;
+}
